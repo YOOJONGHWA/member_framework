@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/member")  // 자주쓸 주소는 한꺼번에 모아서 할수도 있다.
+@RequestMapping("/member")  // 자주쓸 주소는 한꺼번에 모아서 할수도 있다!
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;
