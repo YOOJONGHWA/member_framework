@@ -8,6 +8,7 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>
       /WEB-INF/root-context.xml
+      /WEB-INF/root-context.properties
     </param-value>
   </context-param>
 
@@ -43,5 +44,6 @@
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+
 
 </web-app>
