@@ -36,3 +36,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# .gitignore 파일에 추가
+/src/main/webapp/WEB-INF/root-context.xml
