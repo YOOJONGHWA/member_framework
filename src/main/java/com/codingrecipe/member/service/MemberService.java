@@ -28,4 +28,36 @@ public class MemberService {
     public List<MemberDTO> findAll() {  // 리스트 타입
         return memberRepository.findAll();
     }
+
+    public MemberDTO findById(Long id) {
+        return memberRepository.findById(id);
+    }
+
+    public void delete(Long id) {
+        memberRepository.delete(id);
+    }
+
+    public MemberDTO findByMemberEmail(String loginEmail) {
+        return memberRepository.findByMemberEmail(loginEmail);
+    }
+
+    public boolean update(MemberDTO memberDTO) {
+        int result = memberRepository.update(memberDTO);
+        if(result > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public String emilCheck(String memberEmail) {
+        MemberDTO memberDTO = memberRepository.findByMemberEmail(memberEmail);
+        if(memberDTO == null) {
+            return "ok";
+        }
+        else  {
+            return "no";
+        }
+    }
 }

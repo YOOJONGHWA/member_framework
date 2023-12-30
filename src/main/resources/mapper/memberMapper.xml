@@ -17,4 +17,21 @@
         select * from member_table
     </select>
 
+    <select id="findById"  parameterType="Long" resultType="member">
+        select * from member_table where id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="Long">
+        delete from member_table where id = #{id}
+    </delete>
+
+    <select id="Member.findByMemberEmail"  parameterType="String" resultType="member">
+        select * from member_table where memberEmail = #{memberEmail}
+    </select>
+
+    <update id="Member.update" parameterType="member">
+        update member_table set memberAge = #{memberAge}, memberMobile = #{memberMobile}
+        where id = #{id}
+    </update>
+
 </mapper>
