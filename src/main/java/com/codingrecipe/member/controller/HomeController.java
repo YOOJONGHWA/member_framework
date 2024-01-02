@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
     @GetMapping("/")
     public String index() {
-        return "index"; // jsp 파일 이름이라 생각하면 됨
+        return "member/index"; // jsp 파일 이름이라 생각하면 됨
     }
 }
