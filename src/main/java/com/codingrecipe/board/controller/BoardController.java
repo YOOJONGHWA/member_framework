@@ -1,6 +1,7 @@
 package com.codingrecipe.board.controller;
 
 import com.codingrecipe.board.dto.BoardDTO;
+import com.codingrecipe.board.dto.PageDTO;
 import com.codingrecipe.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,7 @@ public class BoardController {
     public String save(@ModelAttribute BoardDTO boardDTO) {
         int saveResult = boardService.save(boardDTO);
         if(saveResult > 0) {
-            return "redirect:/board/list";
+            return "redirect:/board/paging";
         }
         else {
             return "board/save";
@@ -44,10 +45,13 @@ public class BoardController {
     }
 
     @GetMapping
-    public String findById(@RequestParam("id") Long id, Model model) {
+    public String findById(@RequestParam("id") Long id,
+                           @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                           Model model) {
         boardService.updateHits(id);
         BoardDTO boardDTO = boardService.findAById(id);
         model.addAttribute("board",boardDTO);
+        model.addAttribute("page", page);
         return "board/detail";
     }
 
@@ -80,7 +84,11 @@ public class BoardController {
         System.out.println(" page = " + page);
         // 해당 페이지에서 보여줄 글 목록
         List<BoardDTO> pagingList = boardService.pagingList(page);
-        return "board/index";
+        System.out.println("pagingList" + pagingList);
+        PageDTO pageDTO = boardService.pagingParam(page);
+        model.addAttribute("boardList", pagingList);
+        model.addAttribute("paging", pageDTO);
+        return "board/paging";
     }
 
 }
